@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  --page-bg: #05070b;
+  --page-bg-soft: rgba(12, 16, 24, 0.72);
+  --text-primary: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.68);
+  --panel-border: rgba(255, 255, 255, 0.12);
+  --panel-fill: rgba(12, 16, 24, 0.72);
+  --grid-line: rgba(255, 255, 255, 0.055);
+  --orbit-line: rgba(158, 230, 255, 0.11);
+  --fade-color: #05070b;
+}
+
+:root.light {
+  color-scheme: light;
+  --page-bg: #f4f7fb;
+  --page-bg-soft: rgba(255, 255, 255, 0.76);
+  --text-primary: #0b1220;
+  --text-muted: rgba(11, 18, 32, 0.66);
+  --panel-border: rgba(11, 18, 32, 0.11);
+  --panel-fill: rgba(255, 255, 255, 0.72);
+  --grid-line: rgba(11, 18, 32, 0.06);
+  --orbit-line: rgba(25, 83, 122, 0.12);
+  --fade-color: #f4f7fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--page-bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--page-bg);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
+  transition: background-color 220ms ease, color 220ms ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(158, 230, 255, 0.28);
+  color: #ffffff;
+}
+
+@layer utilities {
+  .glass-panel {
+    border: 1px solid var(--panel-border);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035)),
+      var(--panel-fill);
+    box-shadow: 0 24px 90px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(22px);
+  }
+
+  .subcopy {
+    color: var(--text-muted);
+    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-weight: 400;
+    line-height: 1.75;
+  }
+
+  .background-grid {
+    opacity: 0.13;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  .orbit-ring {
+    border: 1px solid var(--orbit-line);
+    opacity: 0.52;
+    filter: blur(0.15px);
+  }
+
+  .page-fade {
+    background: linear-gradient(to top, var(--fade-color), transparent);
+  }
+
+  .focus-ring {
+    outline: 2px solid transparent;
+    outline-offset: 4px;
+  }
+
+  .focus-ring:focus-visible {
+    outline-color: rgba(158, 230, 255, 0.92);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .light .glass-panel {
+    box-shadow: 0 24px 80px rgba(27, 45, 72, 0.14);
+  }
+
+  .light .bg-ink {
+    background-color: var(--page-bg);
+  }
+
+  .light .text-white,
+  .light [class*="text-white/"] {
+    color: var(--text-primary) !important;
+  }
+
+  .light [class*="bg-white/"] {
+    background-color: rgba(255, 255, 255, 0.56) !important;
+  }
+
+  .light [class*="bg-black/"] {
+    background-color: rgba(255, 255, 255, 0.72) !important;
+  }
+
+  .light [class*="border-white/"] {
+    border-color: rgba(11, 18, 32, 0.13) !important;
+  }
+
+  .light .text-signal {
+    color: #075f78 !important;
+  }
+
+  .light .text-pulse {
+    color: #146c43 !important;
+  }
+
+  .light .text-flare {
+    color: #8f2f8f !important;
+  }
+
+  .light .border-signal\/20,
+  .light .border-signal\/24,
+  .light .border-signal\/30,
+  .light .border-signal\/35,
+  .light .hover\:border-signal\/40:hover {
+    border-color: rgba(7, 95, 120, 0.28) !important;
+  }
+
+  .light .bg-signal\/10,
+  .light .bg-signal\/14,
+  .light .hover\:bg-signal\/20:hover {
+    background-color: rgba(7, 95, 120, 0.09) !important;
+  }
+
+  .light .bg-pulse\/10 {
+    background-color: rgba(20, 108, 67, 0.09) !important;
+  }
+
+  .light .shadow-panel {
+    box-shadow: 0 24px 80px rgba(27, 45, 72, 0.16);
+  }
+
+  .light input,
+  .light textarea {
+    color: var(--text-primary);
+  }
+
+  .light input::placeholder,
+  .light textarea::placeholder {
+    color: rgba(11, 18, 32, 0.42);
+  }
+}
